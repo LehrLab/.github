@@ -20,4 +20,4 @@
 
 # Огляд структури проєкту
 
-
+[Дошка на міро](https://miro.com/app/board/uXjVNWfhJz0=/)
