@@ -21,3 +21,40 @@
 # Огляд структури проєкту
 
 [Дошка на міро](https://miro.com/app/board/uXjVNWfhJz0=/)
+
+# Хочу написати запити на бек. Шо робити?
+1. В директорії модуля знайди або створи папку services
+2. Створи файл module-name.service.ts
+3. Клас буде виглядати наступним чином:
+
+```ts
+// Імпорт фабрики сервісів
+import { httpFactoryService } from '../../../shared/services/http-factory.service';
+// Імпорт сервісу.
+// Якщо не треба надсилати заголовки Authorization, обирай HttpService,
+// інакше EnhancedWithAuthHttpService
+import { HttpService } from '../../../shared/services/http.service';
+
+// Тут типи. Групуємо імпорти по тому що імпортуємо - класи окремо, типи окремо і так далі.
+import { SomethingRequest, SomethingResponse } from '../types/login.types';
+
+class ModuleNameService {
+  // Обов'язково треба написати такий конструктор.
+  constructor(private readonly httpService: HttpService) {
+    this.httpService = httpService;
+  }
+	// Усі апі запити асинхроні. Якщо будемо юзати метод класа ззовні, то пишемо модифікатор public, інакше private. Можна нічого не писати і це неявний public але пишіть явно.
+	// Паблік методи вгорі, приватні внизу.
+	// smthData типізуємо як SomethingRequest. Те, що повертає функція, це SomethingResponse в дженеріку Promise.
+  public async helloWorld(smthData: SomethingRequest): Promise<SomethingResponse> {
+	  // Зверніть увагу, що в дженеріки методу post, put, patch спочатку йде тип респонсу, потім тип реквесту.
+    return this.httpService.post<SomethingResponse, SomethingRequest>('backend.com/api/v1/hello-world/', smthData);
+  }
+}
+
+// Далі експортуємо ЕКЗЕМПЛЯР класу, не сам клас!
+// В конструктор класу передаємо ЕКЗЕМПЛЯР класу HttpService (або іншого, це вже шо тобі треба).
+export const moduleNameService = new ModuleNameService(httpFactoryService.createHttpService());
+// Вітаю! Ти тільки що написав(ла) свій АРІ клас, заюзавши ООП та патерн "композиція" (погугли шо воно таке).
+// Типи для класу створюй в папці src/moduleName/types. Твій сервіс лежить в src/moduleName/services якщо що :)
+```
