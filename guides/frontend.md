@@ -58,3 +58,25 @@ export const moduleNameService = new ModuleNameService(httpFactoryService.create
 // Вітаю! Ти тільки що написав(ла) свій АРІ клас, заюзавши ООП та патерн "композиція" (погугли шо воно таке).
 // Типи для класу створюй в папці src/moduleName/types. Твій сервіс лежить в src/moduleName/services якщо що :)
 ```
+
+Код без коментів:
+
+
+```ts
+import { httpFactoryService } from '../../../shared/services/http-factory.service';
+import { HttpService } from '../../../shared/services/http.service';
+
+import { SomethingRequest, SomethingResponse } from '../types/login.types';
+
+class ModuleNameService {
+  constructor(private readonly httpService: HttpService) {
+    this.httpService = httpService;
+  }
+
+  public async helloWorld(smthData: SomethingRequest): Promise<SomethingResponse> {
+    return this.httpService.post<SomethingResponse, SomethingRequest>('backend.com/api/v1/hello-world/', smthData);
+  }
+}
+
+export const moduleNameService = new ModuleNameService(httpFactoryService.createHttpService());
+```
