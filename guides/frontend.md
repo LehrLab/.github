@@ -80,3 +80,24 @@ class ModuleNameService {
 
 export const moduleNameService = new ModuleNameService(httpFactoryService.createHttpService());
 ```
+
+# Приклад використання нашого шедевру:
+```tsx
+import { useEffect, useState, FC } from 'react';
+import { moduleNameService } from '../path-to-service/module-name.service.ts';
+
+export const ExampleComponent: FC = () => {
+  const [data, setData] = useState([]);
+
+  return (
+    <>
+      <button onClick={async () => {
+        const dataFromServer = await moduleNameService.helloWorld('somedatastr');
+
+        setData(dataFromServer)
+      }}>click</button>
+      {data.map(item => <p>{item}</p>)}
+    </>
+  )
+}
+```
