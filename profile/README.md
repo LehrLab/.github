@@ -7,4 +7,3 @@
   - [Lev Khmelnytskyi](https://github.com/Lev2098) — Backend Developer
   - [Dmytro Koliesnichenko](https://github.com/Koliesnichenko) — Backend Developer
   - [Yulia Syniuk](https://github.com/YuliaSyniuk) — QA Manual Engineer
-  - [Stanislav](https://github.com/dev8psST) — QA Automation Engineer
