@@ -1,7 +1,7 @@
 # Noodi is the educational web-platform
 
 ## Our team:
-  - [Oleksandr Shtonda](https://github.com/oleksandrshtonda) — Frontend Developer | Team lead
+  - [Oleksandr Shtonda](https://github.com/oleksandrshtonda) — Full-stack Developer | Team lead
   - [Diana Kadimbekova](https://github.com/DianaKadimbekova) — Frontend Developer
   - [Vira Matiiash](https://github.com/viramatiiash) — Frontend Developer
   - [Lev Khmelnytskyi](https://github.com/Lev2098) — Backend Developer
